@@ -9,13 +9,43 @@ def create_html_file(title, author, link, lyrics):
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{title}</title>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                margin: 0;
+                padding: 20px;
+            }}
+            h1 {{
+                color: #444;
+            }}
+            a {{
+                color: #0077cc;
+            }}
+            pre {{
+                background-color: #eee;
+                padding: 10px;
+                border-radius: 5px;
+            }}
+            .container {{
+                max-width: 800px;
+                margin: auto;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }}
+        </style>
     </head>
     <body>
-        <h1>{title}</h1>
-        <p><strong>作者:</strong> {author}</p>
-        <p><strong>原曲連結:</strong> <a href="{link}">{link}</a></p>
-        <p><strong>歌詞:</strong></p>
-        <pre>{lyrics}</pre>
+        <div class="container">
+            <h1>{title}</h1>
+            <p><strong>作者:</strong> {author}</p>
+            <p><strong>原曲連結:</strong> <a href="{link}">{link}</a></p>
+            <p><strong>歌詞:</strong></p>
+            <pre>{lyrics}</pre>
+        </div>
     </body>
     </html>
     """
