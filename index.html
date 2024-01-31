@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>歌曲目录</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      #searchInput,
+      #songDropdown {
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+      }
+
+      #container {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      #background-image {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        opacity: 0.8; /* 调整透明度 */
+      }
+    </style>
+    <script>
+      function filterSongs() {
+        var input = document.getElementById("searchInput").value.toUpperCase();
+        var dropdown = document.getElementById("songDropdown");
+        var options = dropdown.options;
+        for (var i = 0; i < options.length; i++) {
+          var txt = options[i].text.toUpperCase();
+          if (txt.indexOf(input) > -1) {
+            options[i].style.display = "";
+          } else {
+            options[i].style.display = "none";
+          }
+        }
+      }
+
+      function goToSong() {
+        var dropdown = document.getElementById("songDropdown");
+        console.log("🚀 ~ goToSong ~ dropdown:", dropdown);
+
+        var url = dropdown.value;
+        if (url) {
+          window.location.href = url;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <img
+        id="background-image"
+        src="F67H-Klb0AAeEdE.jpg"
+        alt="Background Image"
+      />
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="搜索歌曲..."
+        onkeyup="filterSongs()"
+      />
+      <select id="songDropdown" onchange="goToSong()">
+        <option value="悅己令.html">悅己令</option>
+        <option value="我的一個道姑朋友.html">我的一個道姑朋友</option>
+        <option value="我的宅遊劍三.html">我的宅遊劍三</option>
+        <option value="故夢.html">故夢</option>
+        <option value="靜悄悄.html">靜悄悄</option>
+        <!-- 更多歌曲选项 -->
+      </select>
+    </div>
+  </body>
+</html>
