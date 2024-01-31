@@ -40,24 +40,31 @@
       }
     </style>
     <script>
-      function filterSongs() {
+      function filterSongs(event) {
         var input = document.getElementById("searchInput").value.toUpperCase();
         var dropdown = document.getElementById("songDropdown");
         var options = dropdown.options;
+        var firstMatchIndex = -1;
+
         for (var i = 0; i < options.length; i++) {
           var txt = options[i].text.toUpperCase();
           if (txt.indexOf(input) > -1) {
             options[i].style.display = "";
+            if (firstMatchIndex === -1) firstMatchIndex = i;
           } else {
             options[i].style.display = "none";
           }
+        }
+
+        // 如果按下 Enter 键并且有匹配项，更新下拉菜单选中项并跳转
+        if (event.keyCode === 13 && firstMatchIndex !== -1) {
+          dropdown.selectedIndex = firstMatchIndex;
+          goToSong();
         }
       }
 
       function goToSong() {
         var dropdown = document.getElementById("songDropdown");
-        console.log("🚀 ~ goToSong ~ dropdown:", dropdown);
-
         var url = dropdown.value;
         if (url) {
           window.location.href = url;
@@ -76,69 +83,163 @@
         type="text"
         id="searchInput"
         placeholder="搜尋歌曲..."
-        onkeyup="filterSongs()"
+        onkeyup="filterSongs(event)"
       />
       <select id="songDropdown" onchange="goToSong()">
         <option value="&.html">&</option>
+        <option value="45秒で何ができる？.html">45秒で何ができる？</option>
         <option value="60s.html">60S</option>
+        <option value="Butterfly.html">Butterfly</option>
+        <option value="Flamingo.html">Flamingo</option>
+        <option value="flos.html">Flos</option>
+        <option value="Lemon.html">Lemon</option>
         <option value="Letting go.html">Letting Go</option>
+        <option value="NIGHT DANCER.html">Night Dancer</option>
+        <option value="Orion.html">Orion</option>
+        <option value="PLANET.html">Planet</option>
+        <option value="PONPONPON.html">Ponponpon</option>
+        <option value="Pretender.html">Pretender</option>
         <option value="red lips.html">Red Lips</option>
         <option value="Ring Ring Ring.html">Ring Ring Ring</option>
+        <option value="Summertime.html">Summertime</option>
         <option value="TA.html">Ta</option>
+        <option value="YELLOW.html">Yellow</option>
+        <option value="YONA YONA DANCE.html">Yona Yona Dance</option>
+        <option value="あの娘シークレット.html">あの娘シークレット</option>
+        <option value="うそつき.html">うそつき</option>
+        <option value="うっせぇわ.html">うっせぇわ</option>
+        <option value="おじゃま虫.html">おじゃま虫</option>
+        <option value="お気に召すまま.html">お気に召すまま</option>
+        <option value="からくりピエロ.html">からくりピエロ</option>
+        <option value="さくら～あなたに出会えてよかった～.html">
+          さくら～あなたに出会えてよかった～
+        </option>
+        <option value="しょっぱい涙.html">しょっぱい涙</option>
+        <option value="ただ君に晴れ.html">ただ君に晴れ</option>
+        <option value="たばこ.html">たばこ</option>
+        <option value="なんでもないや.html">なんでもないや</option>
+        <option value="アイのシナリオ.html">アイのシナリオ</option>
+        <option value="アイデンティティ.html">アイデンティティ</option>
+        <option value="アイドル.html">アイドル</option>
+        <option value="アイネクライネ.html">アイネクライネ</option>
+        <option value="ウミユリ海底譚.html">ウミユリ海底譚</option>
+        <option value="カタオモイ.html">カタオモイ</option>
+        <option value="ガランド.html">ガランド</option>
+        <option value="グッバイ宣言.html">グッバイ宣言</option>
+        <option value="サマータイムレコード.html">サマータイムレコード</option>
+        <option value="サラマンダー.html">サラマンダー</option>
+        <option value="シャルル.html">シャルル</option>
+        <option value="ダダダダ天使.html">ダダダダ天使</option>
+        <option value="ダンスロボットダンス.html">ダンスロボットダンス</option>
+        <option value="ダーリン.html">ダーリン</option>
+        <option value="ツギハギスタッカート.html">ツギハギスタッカート</option>
+        <option value="テオ.html">テオ</option>
+        <option value="トリセツ.html">トリセツ</option>
+        <option value="ドライフラワー.html">ドライフラワー</option>
+        <option value="ハイドアンド・シーク.html">ハイドアンド・シーク</option>
+        <option value="ヒッチコック.html">ヒッチコック</option>
+        <option value="ファンサ.html">ファンサ</option>
+        <option value="フォニイ.html">フォニイ</option>
+        <option value="ベノム.html">ベノム</option>
+        <option value="マカロン.html">マカロン</option>
+        <option value="ミカヅキ.html">ミカヅキ</option>
+        <option value="リセット.html">リセット</option>
+        <option value="ロメオ.html">ロメオ</option>
+        <option value="ヴァンパイア.html">ヴァンパイア</option>
         <option value="一個人想著一個人.html">一個人想著一個人</option>
         <option value="一笑傾城.html">一笑傾城</option>
         <option value="三月末的風.html">三月末的風</option>
+        <option value="上弦の月.html">上弦の月</option>
         <option value="上邪.html">上邪</option>
+        <option value="不可幸力.html">不可幸力</option>
         <option value="不是因為天氣晴朗才愛你.html">
           不是因為天氣晴朗才愛你
         </option>
         <option value="不曾回來過.html">不曾回來過</option>
+        <option value="世界は恋に落ちている.html">世界は恋に落ちている</option>
         <option value="丟了你.html">丟了你</option>
+        <option value="乙女解剖.html">乙女解剖</option>
         <option value="九連環-鄉愁夜南.html">九連環-鄉愁夜南</option>
+        <option value="今好きになる。.html">今好きになる。</option>
         <option value="你死後全世界都來愛你.html">你死後全世界都來愛你</option>
+        <option value="僕が死のうと思ったのは.html">
+          僕が死のうと思ったのは
+        </option>
+        <option value="冬のはなし.html">冬のはなし</option>
+        <option value="刀ピークリスマス2022.html">刀ピークリスマス2022</option>
         <option value="刪了吧.html">刪了吧</option>
         <option value="南山南.html">南山南</option>
         <option value="危險派對.html">危險派對</option>
         <option value="可惜不是你.html">可惜不是你</option>
+        <option value="可愛くてごめん.html">可愛くてごめん</option>
+        <option value="可愛くなりたい.html">可愛くなりたい</option>
         <option value="可能否.html">可能否</option>
+        <option value="吉原ラメント.html">吉原ラメント</option>
+        <option value="君の脈で踊りたかった.html">君の脈で踊りたかった</option>
+        <option value="君はできない子 .html">君はできない子</option>
+        <option value="命に嫌われている。.html">命に嫌われている。</option>
         <option value="和你度過所有季節.html">和你度過所有季節</option>
         <option value="啷個哩個啷.html">啷個哩個啷</option>
         <option value="四季予你.html">四季予你</option>
         <option value="圈住你.html">圈住你</option>
         <option value="在地球爆炸之前.html">在地球爆炸之前</option>
         <option value="夏天的風.html">夏天的風</option>
+        <option value="夜に駆ける.html">夜に駆ける</option>
         <option value="夜宴風波.html">夜宴風波</option>
+        <option value="夜撫でるメノウ.html">夜撫でるメノウ</option>
         <option value="大浪淘沙.html">大浪淘沙</option>
         <option value="太陽.html">太陽</option>
         <option value="失眠飛行.html">失眠飛行</option>
+        <option value="好きだから.html">好きだから</option>
         <option value="好像掉進愛情海裡.html">好像掉進愛情海裡</option>
         <option value="好想你.html">好想你</option>
         <option value="好想愛這個世界啊.html">好想愛這個世界啊</option>
         <option value="如果可以.html">如果可以</option>
+        <option value="妄想税.html">妄想税</option>
+        <option value="寄り酔い.html">寄り酔い</option>
         <option value="寫給我第一個喜歡的女孩的歌.html">
           寫給我第一個喜歡的女孩的歌
         </option>
         <option value="尋寶.html">尋寶</option>
+        <option value="小さな恋のうた.html">小さな恋のうた</option>
         <option value="小城夏天.html">小城夏天</option>
         <option value="小嫦娥.html">小嫦娥</option>
         <option value="小幸運.html">小幸運</option>
+        <option value="小悪魔だってかまわない！.html">
+          小悪魔だってかまわない！
+        </option>
         <option value="小情歌.html">小情歌</option>
+        <option value="少女レイ.html">少女レイ</option>
         <option value="山有木兮.html">山有木兮</option>
         <option value="干物女.html">干物女</option>
         <option value="張宇宙.html">張宇宙</option>
+        <option value="強風オールバック.html">強風オールバック</option>
+        <option value="彗星ハネムーン.html">彗星ハネムーン</option>
         <option value="形容.html">形容</option>
+        <option value="心做し.html">心做し</option>
         <option value="心引力.html">心引力</option>
         <option value="心牆.html">心牆</option>
         <option value="心聲.html">心聲</option>
         <option value="心跳的證明.html">心跳的證明</option>
         <option value="心電心.html">心電心</option>
+        <option value="思春期少年少女.html">思春期少年少女</option>
+        <option value="怪物.html">怪物</option>
+        <option value="怪獣の花唄.html">怪獣の花唄</option>
+        <option value="恋愛サーキュレーション.html">
+          恋愛サーキュレーション
+        </option>
+        <option value="恋愛裁判.html">恋愛裁判</option>
+        <option value="恋音と雨空.html">恋音と雨空</option>
         <option value="悅己令.html">悅己令</option>
+        <option value="惑星ループ.html">惑星ループ</option>
         <option value="想去海邊.html">想去海邊</option>
+        <option value="愛して愛して愛して.html">愛して愛して愛して</option>
         <option value="愛人錯過.html">愛人錯過</option>
         <option value="愛你.html">愛你</option>
         <option value="愛你不是兩三天.html">愛你不是兩三天</option>
         <option value="愛我還是他.html">愛我還是他</option>
         <option value="愛的魔法.html">愛的魔法</option>
+        <option value="愛言葉Ⅲ.html">愛言葉Ⅲ</option>
         <option value="感覺良好.html">感覺良好</option>
         <option value="我好想你.html">我好想你</option>
         <option value="我就靜靜的看著你裝逼.html">我就靜靜的看著你裝逼</option>
@@ -149,20 +250,24 @@
         <option value="我的一個道姑朋友.html">我的一個道姑朋友</option>
         <option value="我的宅遊劍三.html">我的宅遊劍三</option>
         <option value="我的悲傷是水做的.html">我的悲傷是水做的</option>
+        <option value="戯言スピーカー.html">戯言スピーカー</option>
         <option value="所以我停下來.html">所以我停下來</option>
         <option value="把愛收好.html">把愛收好</option>
         <option value="撒野.html">撒野</option>
         <option value="故夢.html">故夢</option>
+        <option value="新春もちべーしょん.html">新春もちべーしょん</option>
         <option value="早高峰.html">早高峰</option>
         <option value="昨日青空.html">昨日青空</option>
         <option value="是心動呀.html">是心動呀</option>
         <option value="暖暖.html">暖暖</option>
+        <option value="月曜日の憂鬱.html">月曜日の憂鬱</option>
         <option value="有一天我突然發現努力沒有用.html">
           有一天我突然發現努力沒有用
         </option>
         <option value="有何不可.html">有何不可</option>
         <option value="木床.html">木床</option>
         <option value="椿.html">椿</option>
+        <option value="残酷な天使のテーゼ.html">残酷な天使のテーゼ</option>
         <option value="永不失聯的愛.html">永不失聯的愛</option>
         <option value="沒那麼簡單.html">沒那麼簡單</option>
         <option value="浪人琵琶.html">浪人琵琶</option>
@@ -171,29 +276,39 @@
         <option value="海綿寶寶.html">海綿寶寶</option>
         <option value="淒美地.html">淒美地</option>
         <option value="深夜詩人.html">深夜詩人</option>
+        <option value="深海のリトルクライ.html">深海のリトルクライ</option>
+        <option value="灰色と青.html">灰色と青</option>
         <option value="炙熱.html">炙熱</option>
         <option value="熬夜上癮.html">熬夜上癮</option>
         <option value="爛泥.html">爛泥</option>
+        <option value="独りんぼエンヴィー.html">独りんぼエンヴィー</option>
+        <option value="猫.html">猫</option>
         <option value="環遊星空.html">環遊星空</option>
         <option value="當你.html">當你</option>
         <option value="當你孤單你會想起誰.html">當你孤單你會想起誰</option>
         <option value="真沒睡.html">真沒睡</option>
+        <option value="神っぽいな.html">神っぽいな</option>
+        <option value="神様はじめました.html">神様はじめました</option>
         <option value="神魂顛倒.html">神魂顛倒</option>
         <option value="突然想兜風.html">突然想兜風</option>
         <option value="童話.html">童話</option>
         <option value="童話鎮.html">童話鎮</option>
         <option value="給我一個吻.html">給我一個吻</option>
+        <option value="群青.html">群青</option>
         <option value="能不能帶上我.html">能不能帶上我</option>
         <option value="自娛自樂.html">自娛自樂</option>
         <option value="至少還有你.html">至少還有你</option>
         <option value="艷火.html">艷火</option>
         <option value="芊芊.html">芊芊</option>
         <option value="芙蓉雨.html">芙蓉雨</option>
+        <option value="花に亡霊.html">花に亡霊</option>
         <option value="茫.html">茫</option>
         <option value="萬有引力.html">萬有引力</option>
         <option value="落花情.html">落花情</option>
+        <option value="言って。.html">言って。</option>
         <option value="談戀愛.html">談戀愛</option>
         <option value="講真的.html">講真的</option>
+        <option value="踊.html">踊</option>
         <option value="踮起腳尖愛.html">踮起腳尖愛</option>
         <option value="追光者.html">追光者</option>
         <option value="遇見你的時候所有星星都落到我頭上.html">
@@ -202,20 +317,24 @@
         <option value="那不是雪中紅.html">那不是雪中紅</option>
         <option value="那些年.html">那些年</option>
         <option value="那女孩對我說.html">那女孩對我說</option>
+        <option value="酔いどれ知らず.html">酔いどれ知らず</option>
         <option value="銀河與星斗.html">銀河與星斗</option>
         <option value="錦鯉抄.html">錦鯉抄</option>
         <option value="錯位時空.html">錯位時空</option>
         <option value="門沒鎖.html">門沒鎖</option>
         <option value="阿拉斯加海灣.html">阿拉斯加海灣</option>
         <option value="阿斯匹林.html">阿斯匹林</option>
+        <option value="雨き声残響.html">雨き声残響</option>
         <option value="霧裡.html">霧裡</option>
         <option value="霧裡寫給你的歌.html">霧裡寫給你的歌</option>
         <option value="青檸.html">青檸</option>
         <option value="靜悄悄.html">靜悄悄</option>
         <option value="靠近.html">靠近</option>
         <option value="預感.html">預感</option>
+        <option value="風になる.html">風になる</option>
+        <option value="食虫植物.html">食虫植物</option>
+        <option value="香水.html">香水</option>
         <option value="魚仔.html">魚仔</option>
-        <!-- 更多歌曲选项 -->
       </select>
     </div>
   </body>
